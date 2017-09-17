@@ -1,6 +1,6 @@
 {
   "name": "egg-tablestore",
-  "version": "1.0.0",
+  "version": "1.2.1",
   "description": "egg tablestore plugin",
   "eggPlugin": {
     "name": "TableStore"
@@ -40,7 +40,9 @@
   "files": [
     "app.js",
     "agent.js",
-    "config"
+    "config",
+    "app",
+    "lib"
   ],
   "ci": {
     "version": "6, 8"
