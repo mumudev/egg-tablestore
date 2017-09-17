@@ -1,6 +1,6 @@
 {
   "name": "egg-tablestore",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "egg tablestore plugin",
   "eggPlugin": {
     "name": "TableStore"
