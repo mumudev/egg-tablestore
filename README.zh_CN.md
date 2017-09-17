@@ -78,7 +78,7 @@ exports.tabestore = {
 使用方式：
 
 ```js
-app.tabestore.query(sql, values); // 单实例可以直接通过 app.tabestore 访问
+app.tabestore.putRow(params); // 单实例可以直接通过 app.tabestore 访问
 ```
 
 ### 多数据源
@@ -108,19 +108,20 @@ exports.tabestore = {
 };
 ```
 
-使用方式：
+
+
+## 使用方式：
 
 ```js
 const client1 = app.tabestore.get('db1');
-client1.query(sql, values);
+client1.putRow(params);
 
 const client2 = app.tabestore.get('db2');
-client2.query(sql, values);
+client1putRow(params);
+//当要访问TableStore的时候
+app.TableStore
+app.TableStore.Long
 ```
-
-## 详细配置
-
-请到 [config/config.default.js](config/config.default.js) 查看详细配置项说明。
 
 ## 单元测试
 
@@ -128,7 +129,7 @@ client2.query(sql, values);
 
 ## 提问交流
 
-请到 [egg issues](https://github.com/eggjs/egg/issues) 异步交流。
+请到 [egg issues](https://github.com/mumudev/egg-tablestore/issues) 异步交流。
 
 ## License
 

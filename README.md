@@ -96,24 +96,23 @@ exports.mysql = {
 };
 ```
 
-Usage:
-
-```js
-const client1 = app.mysql.get('db1');
-client1.query(sql, values);
-
-const client2 = app.mysql.get('db2');
-client2.query(sql, values);
-```
-
 
 ## Example
 
-<!-- example here -->
+```js
+const client1 = app.tabestore.get('db1');
+client1.putRow(params);
+
+const client2 = app.tabestore.get('db2');
+client1putRow(params);
+//If you want to access TableStore module, you can:
+app.TableStore
+app.TableStore.Long
+```
 
 ## Questions & Suggestions
 
-Please open an issue [here](https://github.com/eggjs/egg/issues).
+Please open an issue [here](https://github.com/mumudev/egg-tablestore/issues).
 
 ## License
 
