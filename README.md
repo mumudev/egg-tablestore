@@ -38,6 +38,13 @@ exports.TableStore = {
   enable: true,
   package: 'egg-tablestore',
 };
+
+await app.tabestore.putRow(params);
+//or
+await ctx.tabestore.putRow(params);
+//If you want to access TableStore module, you can:
+app.TableStore
+app.TableStore.Long
 ```
 
 ## Configuration
@@ -46,7 +53,7 @@ exports.TableStore = {
 ### Simple database instance
 
 ```js
-exports.mysql = {
+exports.tablestore = {
   // database configuration
   client: {
     accessKeyId: '<your access key id>',
@@ -65,16 +72,18 @@ exports.mysql = {
 Usage:
 
 ```js
-app.mysql.query(sql, values); // you can access to simple database instance by using app.mysql.
+await app.tabestore.putRow(params);
+//or
+yield app.tabestore.putRow(params);
 ```
 
 
 ### Multiple database instance
 
 ```js
-exports.mysql = {
+exports.tablestore = {
   clients: {
-    // clientId, access the client instance by app.mysql.get('clientId')
+    // clientId, access the client instance by app.tablestore.get('clientId')
     db1: {
       accessKeyId: '<your access key id>',
       secretAccessKey: '<your access key secret>',
@@ -101,13 +110,14 @@ exports.mysql = {
 
 ```js
 const client1 = app.tabestore.get('db1');
-client1.putRow(params);
+await client1.putRow(params);
+//or
+yield client1.putRow(params);
 
 const client2 = app.tabestore.get('db2');
-client1putRow(params);
-//If you want to access TableStore module, you can:
-app.TableStore
-app.TableStore.Long
+await client2.putRow(params);
+//or
+yield client2.putRow(params);
 ```
 
 ## Questions & Suggestions

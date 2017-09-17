@@ -51,6 +51,12 @@ exports.TableStore = {
   enable: true,
   package: 'egg-tablestore',
 };
+
+app.tabestore.putRow(params); // 单实例可以直接通过 app.tabestore 访问
+ctx.tabestore.putRow(params); // 单实例也可以直接通过 ctx.tabestore 访问
+//当要访问TableStore的时候
+app.TableStore
+app.TableStore.Long
 ```
 
 ## 使用场景
@@ -78,7 +84,9 @@ exports.tabestore = {
 使用方式：
 
 ```js
-app.tabestore.putRow(params); // 单实例可以直接通过 app.tabestore 访问
+await app.tabestore.putRow(params);
+//or
+yield app.tabestore.putRow(params);
 ```
 
 ### 多数据源
@@ -114,13 +122,14 @@ exports.tabestore = {
 
 ```js
 const client1 = app.tabestore.get('db1');
-client1.putRow(params);
+await client1.putRow(params);
+//or
+yield client1.putRow(params);
 
 const client2 = app.tabestore.get('db2');
-client1putRow(params);
-//当要访问TableStore的时候
-app.TableStore
-app.TableStore.Long
+await client2.putRow(params);
+//or
+yield client2.putRow(params);
 ```
 
 ## 单元测试
