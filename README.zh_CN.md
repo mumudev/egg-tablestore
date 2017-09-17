@@ -24,30 +24,43 @@
 Description here.
 -->
 
-## Install
+## 依赖说明
 
-```bash
-$ npm i egg-tablestore --save
-```
+### 依赖的 egg 版本
 
-## Usage
+egg-tablestore 版本 | egg 1.x
+--- | ---
+1.x | 😁
+0.x | ❌
+
+### 依赖的插件
+<!--
+
+如果有依赖其它插件，请在这里特别说明。如
+
+- security
+- multipart
+
+-->
+
+## 开启插件
 
 ```js
-// {app_root}/config/plugin.js
+// config/plugin.js
 exports.TableStore = {
   enable: true,
   package: 'egg-tablestore',
 };
 ```
 
-## Configuration
+## 使用场景
 
 
-### Simple database instance
+### 单数据源
 
 ```js
-exports.mysql = {
-  // database configuration
+exports.tabestore = {
+  // 单数据库信息配置
   client: {
     accessKeyId: '<your access key id>',
     secretAccessKey: '<your access key secret>',
@@ -55,26 +68,25 @@ exports.mysql = {
     endpoint: '<your endpoint>',
     instancename: '<your instance name>'
   },
-  // load into app, default is open
+  // 是否加载到 app 上，默认开启
   app: true,
-  // load into agent, default is close
+  // 是否加载到 agent 上，默认关闭
   agent: false,
 };
 ```
 
-Usage:
+使用方式：
 
 ```js
-app.mysql.query(sql, values); // you can access to simple database instance by using app.mysql.
+app.tabestore.query(sql, values); // 单实例可以直接通过 app.tabestore 访问
 ```
 
-
-### Multiple database instance
+### 多数据源
 
 ```js
-exports.mysql = {
+exports.tabestore = {
   clients: {
-    // clientId, access the client instance by app.mysql.get('clientId')
+    // clientId, 获取client实例，需要通过 app.tabestore.get('clientId') 获取
     db1: {
       accessKeyId: '<your access key id>',
       secretAccessKey: '<your access key secret>',
@@ -84,36 +96,39 @@ exports.mysql = {
     },
     // ...
   },
-  // default configuration for all databases
+  // 所有数据库配置的默认值
   default: {
 
   },
 
-  // load into app, default is open
+  // 是否加载到 app 上，默认开启
   app: true,
-  // load into agent, default is close
+  // 是否加载到 agent 上，默认关闭
   agent: false,
 };
 ```
 
-Usage:
+使用方式：
 
 ```js
-const client1 = app.mysql.get('db1');
+const client1 = app.tabestore.get('db1');
 client1.query(sql, values);
 
-const client2 = app.mysql.get('db2');
+const client2 = app.tabestore.get('db2');
 client2.query(sql, values);
 ```
 
+## 详细配置
 
-## Example
+请到 [config/config.default.js](config/config.default.js) 查看详细配置项说明。
 
-<!-- example here -->
+## 单元测试
 
-## Questions & Suggestions
+<!-- 描述如何在单元测试中使用此插件，例如 schedule 如何触发。无则省略。-->
 
-Please open an issue [here](https://github.com/eggjs/egg/issues).
+## 提问交流
+
+请到 [egg issues](https://github.com/eggjs/egg/issues) 异步交流。
 
 ## License
 
